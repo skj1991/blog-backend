@@ -15,7 +15,7 @@ class Api::V1::CommentsController < ApplicationController
     def create
         @comment = @post.comments.new(comment_params)
         if @comment.save
-            render json: @comment
+            render json: @post
         else
             render json: {error: 'Error creating comment'} 
         end
