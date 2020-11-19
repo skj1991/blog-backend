@@ -21,9 +21,11 @@ class Api::V1::CommentsController < ApplicationController
         end
     end
 
-    def destory
-        @comment = @post.comments.find_by(id: params[:id])
-        @comment.destory
+    def destroy
+        @comment = Comment.find_by(params["id"])
+        @post = Post.find(@comment.post_id)
+        @comment.destroy
+        render json: @post
     end
     
     private
