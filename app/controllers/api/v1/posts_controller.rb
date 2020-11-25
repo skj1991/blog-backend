@@ -22,6 +22,13 @@ class Api::V1::PostsController < ApplicationController
         @post = Post.find(params[:id])
         @post.destroy
     end
+
+    def update
+        @post = Post.find(params[:id])
+        @post.update(title: params["post"]["title"], image: params["post"]["image"], content: params["post"]["content"] )
+        @post.save
+        render json: @post
+    end
     
     private
     
